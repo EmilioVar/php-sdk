@@ -67,7 +67,22 @@ $response = $client->getSignatures(50);
 ##### Getting signatures with custom field "crm_id"
 
 ```php
-$response = $client->getSignatures(100, 0, ['crm_id' => 'CUSTOM_ID'])
+$response = $client->getSignatures(100, 0, ['crm_id' => 'CUSTOM_ID']);
+```
+
+**Parameters:**
+
+- **`$limit`** (int): Maximum number of signatures to return in the response. In this example: `100`
+- **`$offset`** (int): Number of records to skip from the beginning. Useful for pagination. In this example: `0` (start from the first record)
+- **`$filters`** (array, optional): Associative array with filters to search for specific signatures. In this example: `['crm_id' => 'CUSTOM_ID']` filters by the custom field "crm_id"
+
+**Usage examples:**
+```php
+// Get the first 100 signatures with a specific CRM ID
+$response = $client->getSignatures(100, 0, ['crm_id' => 'CUSTOM_ID']);
+
+// Get the next 50 signatures (pagination)
+$response = $client->getSignatures(50, 100, ['crm_id' => 'CUSTOM_ID']);
 ```
 
 ### Get signature request
